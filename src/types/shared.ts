@@ -4,3 +4,5 @@ export type TodoType = {
 	completed: boolean;
 	isDeleted: boolean;
 };
+
+export type FilterStatusType = 'all' | 'active' | 'completed' | 'deleted';

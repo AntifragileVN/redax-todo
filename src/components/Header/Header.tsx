@@ -5,7 +5,6 @@ export const Header = () => {
 		<header>
 			<nav>
 				<NavLink to="/">All</NavLink>
-				<NavLink to="/deleted">Deleted</NavLink>
 			</nav>
 		</header>
 	);
