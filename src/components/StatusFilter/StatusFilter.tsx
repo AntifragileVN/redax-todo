@@ -3,19 +3,19 @@ import { filtersStatus } from 'src/redux/constants';
 import { setFilterStatus } from 'src/redux/filterSlice';
 import { selectFilterStatus } from 'src/redux/selectors';
 import { FilterStatusType } from 'src/types/shared';
-import css from './StatusFilter.module.css';
-import { Button } from '../Button/Button';
+import { Button } from 'src/components/Button/Button';
+import './StatusFilter.scss';
 
 export const StatusFilter = () => {
 	const dispatch = useDispatch();
 
-	const filter = useSelector(selectFilterStatus); //string
+	const filter = useSelector(selectFilterStatus);
 
 	const handleFilterChange = (filter: FilterStatusType) =>
 		dispatch(setFilterStatus(filter));
 
 	return (
-		<div className={css.wrapper}>
+		<div className="filters__wrapper">
 			<Button
 				selected={filter === filtersStatus.all}
 				onClick={() => handleFilterChange(filtersStatus.all)}
@@ -35,7 +35,7 @@ export const StatusFilter = () => {
 				Completed
 			</Button>
 			<Button
-				selected={filter === filtersStatus.completed}
+				selected={filter === filtersStatus.deleted}
 				onClick={() => handleFilterChange(filtersStatus.deleted)}
 			>
 				Deleted

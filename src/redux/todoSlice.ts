@@ -1,9 +1,7 @@
 import { createSlice, nanoid } from '@reduxjs/toolkit';
 import { TodoType } from 'src/types/shared';
 
-const initialState: Array<TodoType> = [
-	{ id: '12345asdfas', text: 'homework', completed: false, isDeleted: false },
-];
+const initialState: Array<TodoType> = [];
 
 export const todoSlice = createSlice({
 	name: 'todos',
