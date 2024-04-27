@@ -16,7 +16,7 @@ export const MainWrapper = ({ children }: MainWrapperProps) => {
 			<React.StrictMode>
 				<Provider store={store}>
 					<PersistGate loading={null} persistor={persistor}>
-						<BrowserRouter>{children}</BrowserRouter>
+						<BrowserRouter basename="redux-todo">{children}</BrowserRouter>
 					</PersistGate>
 				</Provider>
 			</React.StrictMode>
