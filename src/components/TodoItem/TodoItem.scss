@@ -1,3 +1,5 @@
+@use 'src/scss/utils/' as *;
+
 .todo__wrapper {
 	display: flex;
 	align-items: center;
@@ -8,6 +10,11 @@
 	&.completed {
 		text-decoration: line-through;
 	}
+}
+.todo__edit-input {
+	display: flex;
+	// border: none;
+	height: 100%;
 }
 
 .todo__btn {
@@ -22,7 +29,18 @@
 	border-radius: 4px;
 	background-color: transparent;
 	cursor: pointer;
-	color: #f44336;
+
+	&.delete {
+		color: $red;
+	}
+
+	&.edit {
+		color: $successColor;
+	}
+
+	&.confirm {
+		color: $green;
+	}
 
 	&:hover {
 		background-color: #e2e5e8;

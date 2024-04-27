@@ -16,6 +16,12 @@ export const todoSlice = createSlice({
 			};
 			state.push(newTodo);
 		},
+		editTodo: (state, action) => {
+			const todo = state.find((todo) => todo.id === action.payload.id);
+			if (todo) {
+				todo.text = action.payload.text;
+			}
+		},
 		archiveTodo: (state, action) => {
 			const todo = state.find((todo) => todo.id === action.payload);
 			if (todo) {
@@ -37,5 +43,6 @@ export const todoSlice = createSlice({
 	},
 });
 
-export const { addTodo, deleteTodo, archiveTodo, toggleCompletion } = todoSlice.actions;
+export const { addTodo, deleteTodo, editTodo, archiveTodo, toggleCompletion } =
+	todoSlice.actions;
 export default todoSlice.reducer;
