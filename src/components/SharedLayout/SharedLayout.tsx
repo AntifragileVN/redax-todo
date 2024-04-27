@@ -3,10 +3,10 @@ import { Outlet } from 'react-router-dom';
 
 export const SharedLayout = () => {
 	return (
-		<>
+		<main>
 			<Suspense fallback={null}>
 				<Outlet />
 			</Suspense>
-		</>
+		</main>
 	);
 };

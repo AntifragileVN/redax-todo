@@ -1,3 +1,5 @@
+@use 'src/scss/utils/' as *;
+
 .btn {
 	display: inline-flex;
 	padding: 8px 12px;
@@ -7,6 +9,7 @@
 	cursor: pointer;
 	background-color: #e2e5e8;
 	color: inherit;
+	transition: background-color $transitionButton, color $transitionButton;
 }
 
 .btn.isSelected {

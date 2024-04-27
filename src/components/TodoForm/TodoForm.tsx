@@ -3,6 +3,7 @@ import { addTodo } from 'src/redux/todoSlice';
 import { Button } from 'src/components/Button/Button';
 import { SyntheticEvent, useState } from 'react';
 import './TodoForm.scss';
+import { notifyError, notifySuccess } from 'src/services/notify';
 
 export const TodoForm = () => {
 	const [text, setText] = useState<string>('');
@@ -13,7 +14,9 @@ export const TodoForm = () => {
 		if (text.trim().length > 0) {
 			dispatch(addTodo(text));
 			setText('');
+			notifySuccess('Add task success');
 		}
+		notifyError('You must write something');
 	};
 
 	return (
