@@ -15,6 +15,7 @@ export const TodoForm = () => {
 			dispatch(addTodo(text));
 			setText('');
 			notifySuccess('Add task success');
+			return;
 		}
 		notifyError('You must write something');
 	};
