@@ -9,15 +9,16 @@ export const selectFilterStatus = (state: RootState) => state.filter.status;
 export const selectVisibleTodos = createSelector(
 	[selectTodos, selectFilterStatus],
 	(todos, status) => {
+		console.log(todos);
 		switch (status) {
 			case filtersStatus.active:
-				return todos.filter((todo) => !todo.completed && !todo.isDeleted);
+				return todos.filter((todo) => !todo.completed && !todo.archived);
 			case filtersStatus.completed:
-				return todos.filter((todo) => todo.completed && !todo.isDeleted);
+				return todos.filter((todo) => todo.completed && !todo.archived);
 			case filtersStatus.deleted:
-				return todos.filter((todo) => todo.isDeleted);
+				return todos.filter((todo) => todo.archived);
 			default:
-				return todos.filter((todo) => !todo.isDeleted);
+				return todos.filter((todo) => !todo.archived);
 		}
 	}
 );
@@ -25,15 +26,15 @@ export const selectVisibleTodos = createSelector(
 export const selectTaskCount = createSelector([selectTodos], (todos) => {
 	return todos.reduce(
 		(count, todo) => {
-			if (todo.completed && !todo.isDeleted) {
+			if (todo.completed && !todo.archived) {
 				count.completed += 1;
-			} else if (todo.isDeleted) {
-				count.deleted += 1;
+			} else if (todo.archived) {
+				count.archived += 1;
 			} else {
 				count.active += 1;
 			}
 			return count;
 		},
-		{ active: 0, completed: 0, deleted: 0 }
+		{ active: 0, completed: 0, archived: 0 }
 	);
 });

@@ -12,18 +12,20 @@ export const todoSlice = createSlice({
 				id: nanoid(),
 				text: action.payload,
 				completed: false,
-				isDeleted: false,
+				archived: false,
 			};
 			state.push(newTodo);
 		},
-		deleteTodo: (state, action) => {
-			// const index = state.findIndex((todo) => todo.id === action.payload);
-			// if (index !== -1) {
-			// 	state.splice(index, 1);
-			// }
+		archiveTodo: (state, action) => {
 			const todo = state.find((todo) => todo.id === action.payload);
 			if (todo) {
-				todo.isDeleted = !todo.isDeleted;
+				todo.archived = !todo.archived;
+			}
+		},
+		deleteTodo: (state, action) => {
+			const index = state.findIndex((todo) => todo.id === action.payload);
+			if (index !== -1) {
+				state.splice(index, 1);
 			}
 		},
 		toggleCompletion: (state, action) => {
@@ -35,5 +37,5 @@ export const todoSlice = createSlice({
 	},
 });
 
-export const { addTodo, deleteTodo, toggleCompletion } = todoSlice.actions;
+export const { addTodo, deleteTodo, archiveTodo, toggleCompletion } = todoSlice.actions;
 export default todoSlice.reducer;
